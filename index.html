@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Автосервис</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<h1>Учетная система автосервиса</h1>
+
+<button id="addBtn" v-on:click="visible">Добавить автомобиль</button>
+<button id="cancelBtn" v-on:click="unvisible">Отменить</button>
+
+<div class="reg" v-if="seen" id="app" >
+    <fieldset>
+        <input type="number" v-model="number" id="number" placeholder="Номер заявки">
+        <br>
+        <br>
+        <label for="urgency">Выберите срочность выполнения работы</label>
+        <select name="" v-model="urgency" id="urgency" >
+            <option value='high'>Очень срочно</option>
+            <option value='medium'>Срочно</option>
+            <option value='low'>Не срочно</option>
+        </select>
+        <br>
+        <br>
+        <label for="regNum">Государственный номер авто</label>
+        <input v-model="regNum" id="regNum"  placeholder="Введите гос. номер авто">
+        <br>
+        <br>
+        <label for="modelAuto">Марка автомобиля</label>
+        <input v-model="modelAuto" id="modelAuto"  placeholder="Введите марку авто">
+        <br>
+        <br>
+        <label for="nameOwner">ФИО владельца автомобиля</label>
+        <input v-model="nameOwner" id="nameOwner"  placeholder="Введите ФИО">
+        <br>
+        <br>
+        <label for="phoneOwner">Телефон владельца автомобиля</label>
+        <input type="number" v-model="phoneOwner" id="phoneOwner"  placeholder="Введите телефон">
+        <br>
+        <br>
+        <label for="kindWork">Вид работ</label>
+        <select name="" v-model="kindWork" id="kindWork" >
+            <option value="Ремонт">Ремонт</option>
+            <option value="ТО">ТО</option>
+        </select>
+        <br>
+        <br>
+        <label for="selectMechanic">Назначен мастер</label>
+        <select name="" v-model="selectMechanic" id="selectMechanic" >
+            <option value="Иванов Иван Иванович">Иванов Иван Иванович</option>
+            <option value="Петров Петр Петрович">Петров Петр Петрович</option>
+            <option value="Алексеев Алексей Алексеевич">Алексеев Алексей Алексеевич</option>
+        </select>
+        <br>
+        <br>
+        <label for="priceWork">Цена работ</label>
+        <input type="number" v-model="priceWork" id="priceWork"  placeholder="Введите цену">
+        <br>
+        <br>
+        <label for="comments">Комментарий</label>
+        <textarea type="text" v-model="comments" id="comments"  placeholder="Ваш комментарий"></textarea>
+        <br>
+        <br>
+        <button v-on:click="addCar" id="regBtn">Зарегистрировать заявку</button>
+    </fieldset>
+</div>
+<ol id="clients">
+    <li v-for="inform in informs">
+    Номер заявки:{{informs.number}}, Срочность:{{informs.urgency}}, Гос.Номер:{{informs.regNum}},
+    Марка автомобиля: {{informs.modelAuto}}, ФИО:{{informs.nameOwner}}, Номер клиента:{{informs.phoneOwner}},
+    Вид работ:{{informs.kindWork}}, Назначен мастер: {{informs.selectMechanic}}, Цена: {{informs.priceWork}}.руб, Комментарий: {{informs.comments}}
+    </li>
+</ol>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
