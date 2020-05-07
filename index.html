@@ -10,11 +10,11 @@
 </head>
 <body>
 <h1>Учетная система автосервиса</h1>
-
+<div id="app" >
 <button id="addBtn" v-on:click="visible">Добавить автомобиль</button>
 <button id="cancelBtn" v-on:click="unvisible">Отменить</button>
 
-<div class="reg" v-if="seen" id="app" >
+<div class="reg" v-if="seen"  >
     <fieldset>
         <input type="number" v-model="number" id="number" placeholder="Номер заявки">
         <br>
@@ -69,13 +69,13 @@
         <button v-on:click="addCar" id="regBtn">Зарегистрировать заявку</button>
     </fieldset>
 </div>
-<ol id="clients">
-    <li v-for="inform in informs">
-    Номер заявки:{{informs.number}}, Срочность:{{informs.urgency}}, Гос.Номер:{{informs.regNum}},
-    Марка автомобиля: {{informs.modelAuto}}, ФИО:{{informs.nameOwner}}, Номер клиента:{{informs.phoneOwner}},
-    Вид работ:{{informs.kindWork}}, Назначен мастер: {{informs.selectMechanic}}, Цена: {{informs.priceWork}}.руб, Комментарий: {{informs.comments}}
-    </li>
-</ol>
+<div id="clients" v-for="inform in informs" class="out">
+    Номер заявки:{{inform.number}}, <br> Срочность:{{inform.urgency}}, <br> Гос.Номер:{{inform.regNum}},
+    <br> Марка автомобиля: {{inform.modelAuto}}, <br> ФИО:{{inform.nameOwner}}, <br> Номер клиента:{{inform.phoneOwner}},
+    <br> Вид работ:{{inform.kindWork}}, <br> Назначен мастер: {{inform.selectMechanic}}, <br> Цена: {{inform.priceWork}}.руб,
+    <br> Комментарий: {{inform.comments}}
+</div>
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="script.js"></script>
 </body>
